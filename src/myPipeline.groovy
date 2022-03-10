@@ -23,7 +23,7 @@ def call(Map pipelineParams) {
 
             stage('deploy'){
                 steps {
-                    bat ''
+                    bat 'sharelibjf-zip.py'
                 }
             }
         }
