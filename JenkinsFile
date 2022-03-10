@@ -4,31 +4,31 @@ pipeline {
         branch = 'main'
         scmUrl = 'https://github.com/dharmendra3671/Pipeline_jenkins.git'
         serverPort = '8080'
-    }
-    stages {
-        stage('checkout git') {
-            steps {
-                git branch: branch, url: scmUrl
-            }
         }
+        stages {
+            stage('checkout git') {
+                steps {
+                    git branch: branch, url: scmUrl
+                }
+            }
 
-        stage('build') {
-            steps {
-                bat 'Pythonzip.py'
+            stage('build') {
+                steps {
+                    bat 'Pythonzip.py'
+                }
             }
-        }
 
-        stage ('test') {
-            steps {
-                echo 'testing'
+            stage ('test') {
+                steps {
+                    echo 'testing'
+                }
             }
-        }
 
-        stage('deploy'){
-            steps {
-                bat 'sharelibjf-zip.py'
+            stage('deploy'){
+                steps {
+                    bat 'sharelibjf-zip.py'
+                }
             }
-        }
 
     post {
         always {
