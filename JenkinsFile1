@@ -1,6 +1,7 @@
 example{
-  stage("message"){
-    script{
-    myPipeline(branch: 'main', scmUrl: 'https://github.com/dharmendra3671/Pipeline_jenkins.git',email: 'kumar.dk3671@gmail.com', serverPort: '8080')
-  }
+    stage("message"){
+        script{
+            myPipeline(branch: 'main', scmUrl: 'https://github.com/dharmendra3671/Pipeline_jenkins.git',email: 'kumar.dk3671@gmail.com', serverPort: '8080')
+        }
+    }
  }
