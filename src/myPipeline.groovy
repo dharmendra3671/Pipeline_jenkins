@@ -5,46 +5,31 @@ def call(Map pipelineParams) {
         stages {
             stage('checkout git') {
                 steps {
-                    git branch: pipelineParams.branch, credentialsId: 'GitCredentials', url: pipelineParams.scmUrl
+                    git branch: pipelineParams.branch, url: pipelineParams.scmUrl
                 }
             }
 
             stage('build') {
                 steps {
-                    sh 'mvn clean package -DskipTests=true'
+                   bat ''
                 }
             }
 
             stage ('test') {
                 steps {
-                    parallel (
-                        "unit tests": { sh 'mvn test' },
-                        "integration tests": { sh 'mvn integration-test' }
-                    )
+                    echo 'testing'
                 }
             }
 
-            stage('deploy developmentServer'){
+            stage('deploy'){
                 steps {
-                    deploy(pipelineParams.developmentServer, pipelineParams.serverPort)
-                }
-            }
-
-            stage('deploy staging'){
-                steps {
-                    deploy(pipelineParams.stagingServer, pipelineParams.serverPort)
-                }
-            }
-
-            stage('deploy production'){
-                steps {
-                    deploy(pipelineParams.productionServer, pipelineParams.serverPort)
+                    bat ''
                 }
             }
         }
         post {
             failure {
-                mail to: pipelineParams.email, subject: 'Pipeline failed', body: "${env.BUILD_URL}"
+                mail to: pipelineParams.email, subject: '', body: ""
             }
         }
     }
