@@ -5,8 +5,6 @@ pipeline {
         scmUrl = 'https://github.com/dharmendra3671/Pipeline_jenkins.git'
         serverPort = '8080'
         developmentServer = 'dev-myproject.mycompany.com'
-        stagingServer = 'staging-myproject.mycompany.com'
-        productionServer = 'production-myproject.mycompany.com'
     }
     stages {
         stage('checkout git') {
@@ -17,40 +15,31 @@ pipeline {
 
         stage('build') {
             steps {
-                sh 'mvn clean package -DskipTests=true'
+                bat ''
             }
         }
 
         stage ('test') {
             steps {
-                parallel (
-                    "unit tests": { sh 'mvn test' },
-                    "integration tests": { sh 'mvn integration-test' }
-                )
+                echo 'testing'
             }
         }
 
-        stage('deploy development'){
+        stage('deploy'){
             steps {
                 deploy(developmentServer, serverPort)
             }
         }
 
-        stage('deploy staging'){
-            steps {
-                deploy(stagingServer, serverPort)
-            }
-        }
-
-        stage('deploy production'){
-            steps {
-                deploy(productionServer, serverPort)
-            }
-        }
-    }
     post {
-        failure {
-            mail to: 'team@example.com', subject: 'Pipeline failed', body: "${env.BUILD_URL}"
+        always {
+
+                echo 'Status of build'
+                emailext attachLog:true,
+                subject: "Jenkins Pipeline Build Status",
+
+                body:"${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n ${currentBuild.currentResult}: Job ${env.JOB_NAME} \n ${currentBuild.currentResult}: ${env.BUILD_TAG}",
+
+                to:'kumar.dk3671@gmail.com'
         }
-    }
 }
