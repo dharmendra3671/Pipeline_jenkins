@@ -15,7 +15,7 @@ pipeline {
 
         stage('build') {
             steps {
-                bat ''
+                bat 'Pythonzip.py'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
 
         stage('deploy'){
             steps {
-                deploy(developmentServer, serverPort)
+                bat ''
             }
         }
 
