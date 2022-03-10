@@ -11,35 +11,32 @@ pipeline {
                     git branch: branch, url: scmUrl
                 }
             }
-
             stage('build') {
                 steps {
                     bat 'Pythonzip.py'
                 }
             }
-
             stage ('test') {
                 steps {
                     echo 'testing'
                 }
             }
-
             stage('deploy'){
                 steps {
                     bat 'sharelibjf-zip.py'
                 }
             }
-        post {
-            always{
-                echo 'Status of build'
-                emailext attachLog:true,
-                subject: "Jenkins Pipeline Build Status",
+        }
+    post {
+        always{
+            echo 'Status of build'
+            emailext attachLog:true,
+            subject: "Jenkins Pipeline Build Status",
 
-                body:"${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n ${currentBuild.currentResult}: Job ${env.JOB_NAME} \n ${currentBuild.currentResult}: ${env.BUILD_TAG}",
+            body:"${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n ${currentBuild.currentResult}: Job ${env.JOB_NAME} \n ${currentBuild.currentResult}: ${env.BUILD_TAG}",
 
-                to:'kumar.dk3671@gmail.com'
-            }
+            to:'kumar.dk3671@gmail.com'
         }
     }
-
 }
+
