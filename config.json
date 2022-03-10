@@ -1,0 +1,16 @@
+{
+    "data1":[
+        {
+            "path": "D:\\Test\\Testfile",
+            "file":6,
+            "subdir": "D:\\Test",
+            "Zip_file_name": "D:\\Test\\python.zip"
+        },
+        {
+            "path": "D:\\Test2\\TestFile2",
+            "file":5,
+            "subdir": "D:\\Test2",
+            "Zip_file_name": "D:\\Test2\\python1.zip"
+        }
+    ]
+}
