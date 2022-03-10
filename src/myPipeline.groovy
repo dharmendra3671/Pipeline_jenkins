@@ -11,7 +11,7 @@ def call(Map pipelineParams) {
 
             stage('build') {
                 steps {
-                   bat ''
+                   bat 'Pythonzip.py'
                 }
             }
 
