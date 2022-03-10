@@ -1,2 +1,0 @@
-myPipeline(branch: 'main', scmUrl: 'https://github.com/dharmendra3671/Pipeline_jenkins.git',
-                   email: 'dk.kumar3671@gmail.com', serverPort: '8080')
