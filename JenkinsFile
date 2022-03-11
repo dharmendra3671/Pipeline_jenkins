@@ -1,42 +1,27 @@
+@Library('myPipeline') _ 
+
 pipeline {
     agent any
-    environment {
-        branch = 'main'
-        scmUrl = 'https://github.com/dharmendra3671/Pipeline_jenkins.git'
-        serverPort = '8080'
-        }
-        stages {
-            stage('checkout git') {
-                steps {
-                    git branch: branch, url: scmUrl
-                }
-            }
-            stage('build') {
-                steps {
-                    bat 'Pythonzip.py'
-                }
-            }
-            stage ('test') {
-                steps {
-                    echo 'testing'
-                }
-            }
-            stage('deploy'){
-                steps {
-                    bat 'sharelibjf-zip.py'
-                }
+    stages {
+        stage('build') {
+            steps {
+                bat 'Pythonzip.py'
             }
         }
-    post {
-        always{
-            echo 'Status of build'
-            emailext attachLog:true,
-            subject: "Jenkins Pipeline Build Status",
-
-            body:"${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n ${currentBuild.currentResult}: Job ${env.JOB_NAME} \n ${currentBuild.currentResult}: ${env.BUILD_TAG}",
-
-            to:'kumar.dk3671@gmail.com'
+        stage ('test') {
+            steps {
+                echo 'testing'
+            }
+        }
+        stage('deploy'){
+            steps {
+                bat 'sharelibjf-zip.py'
+            }
         }
     }
+    post {
+    always {
+      sendNotifications currentBuild.result
+    }
+  }
 }
-
