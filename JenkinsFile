@@ -16,11 +16,12 @@ pipeline {
         stage('deploy'){
             steps {
                 bat {ExternalLoadScript()}/Scripts
+            }
         }
     }
     post {
         always {
-        sendNotification currentBuild.result
+            sendNotification currentBuild.result
         }
     }
 }
