@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               bat "${get_resource_dir()}/Scripts/test.txt"
+               bat "${get_resource_dir()}/Scripts/test.py"
             }
         }
         stage ('test') {
@@ -16,7 +16,7 @@ pipeline {
         stage('deploy'){
             steps {
                 //echo 'deploying'
-                bat "${get_resource_dir()}/Scripts/test1.txt"
+                bat "${get_resource_dir()}/Scripts/test1.py"
             }
         }
     }
