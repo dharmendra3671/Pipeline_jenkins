@@ -15,6 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
+                echo 'deploying'
                 //bat "${get_resource_dir()}/Scripts/sharelibjf-zip.py"
             }
         }
