@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               bat "${get_resource_dir()}/sharelibjf-zip.py"
+               bat "${get_resource_dir()} resources/Scripts/Pythonzip.py"
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                bat "${get_resource_dir()}/sharelibjf-zip.py"
+                bat "${get_resource_dir()} resources/Scripts/sharelibjf-zip.py"
             }
         }
     }
