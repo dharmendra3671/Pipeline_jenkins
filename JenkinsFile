@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                ExternalLoadScript.call()
+                ExternalLoadScript()
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                ExternalLoadScript.call()
+                ExternalLoadScript()
             }
         }
     }
