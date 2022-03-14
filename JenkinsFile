@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               bat "{ExternalLoadScript()}/Scripts" 
+               bat "${get_resource_dir()}/"
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                bat "{ExternalLoadScript()}/Scripts"
+                bat "${get_resource_dir()}/"
             }
         }
     }
