@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                loadScript ${config.text)
+                ExternalLoadScript ${config.name}
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                bat 'sharelibjf-zip.py'
+                ExternalLoadScript ${config.name}
             }
         }
     }
