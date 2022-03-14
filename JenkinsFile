@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                ExternalLoadScript(params.name)
+                ExternalLoadScript("Pythonzip.py")
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                ExternalLoadScript(params.name)
+                ExternalLoadScript()
             }
         }
     }
