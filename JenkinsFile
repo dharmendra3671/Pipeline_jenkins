@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                ExternalLoadScript 
+               bat {ExternalLoadScript()}/Scripts 
             }
         }
         stage ('test') {
@@ -15,8 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                ExternalLoadScript 
-            }
+                bat {ExternalLoadScript()}/Scripts
         }
     }
     post {
