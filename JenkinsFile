@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               libraryResource 'sharedlibvarfile/tree/main/resources/Scripts/Pythonzip.py'
+               bat "${get_resource_dir()}/"
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                libraryResource 'sharedlibvarfile/tree/main/resources/Scripts/sharelibjf-zip.py'
+                sh "${get_resource_dir()}/com/example/test.sh"
             }
         }
     }
