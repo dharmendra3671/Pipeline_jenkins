@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               libraryResource("Pythonzip.py")
+               libraryResource("resources/Scripts/Pythonzip.py")
             }
         }
         stage ('test') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                libraryResource("sharelibjf-zip.py")
+                libraryResource("resources/Scripts/sharelibjf-zip.py")
             }
         }
     }
