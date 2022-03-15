@@ -1,4 +1,4 @@
-@Library('mypipeline_notification') _
+@Library('shared_resource') _
 
 pipeline {
     agent any
