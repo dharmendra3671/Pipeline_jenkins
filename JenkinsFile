@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-               bat "get_resource_dir().call()"
+               bat "get_resource_dir().get_resource()"
             }
         }
         stage ('test') {
@@ -15,8 +15,8 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                //echo 'deploying'
-                bat "get_resource_dir().call()"
+                echo 'deploying'
+               // bat "get_resource_dir().call()"
             }
         }
     }
