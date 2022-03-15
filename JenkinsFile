@@ -16,7 +16,7 @@ pipeline {
         stage('deploy'){
             steps {
                 //echo 'deploying'
-                bat "${get_resource_dir()}/Scripts/test.py"
+                bat "get_resource_dir().call()"
             }
         }
     }
