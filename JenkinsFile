@@ -17,8 +17,9 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                echo 'deploying'
-               // bat "get_resource_dir().call()"
+                script{
+                    get_resource_dir.runpythonScripts()
+                }
             }
         }
     }
@@ -28,4 +29,3 @@ pipeline {
         }
     }
 }
-
