@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                scripts{
+                script{
                     get_resource_dir.get_resource()
                 }
             }
