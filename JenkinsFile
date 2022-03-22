@@ -6,7 +6,7 @@ pipeline {
         stage('build') {
             steps {
                 script{
-                    getResource_dir.runMyPython()
+                    getResource_dir.runpythonScripts()
                 }
             }
         }
@@ -18,7 +18,7 @@ pipeline {
         stage('deploy'){
             steps {
                 script{
-                    getResource_dir.runpythonScripts()
+                    getResource_dir.runMyPython()
                 }
             }
         }
